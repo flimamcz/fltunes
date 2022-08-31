@@ -43,7 +43,12 @@ class Header extends Component {
           </ul>
         </nav>
         <div>
-          {loading ? <Loading /> : <p data-testid="header-user-name">{user.name}</p>}
+          {loading ? <Loading /> : (
+            <p data-testid="header-user-name">
+              Usuario:
+              {' '}
+              {user.name}
+            </p>)}
         </div>
       </header>
     );
