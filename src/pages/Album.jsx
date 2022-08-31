@@ -20,7 +20,7 @@ class Album extends Component {
     const musics = await musicsAPI(id);
     this.setState({
       dataMusics: musics,
-      musicFilter: musics.filter((music, index) => index !== 0),
+      musicFilter: musics.filter((_music, index) => index !== 0),
     });
   };
 
@@ -36,11 +36,13 @@ class Album extends Component {
             <img src={ dataMusics[0].artworkUrl100 } alt={ dataMusics[0].artistName } />
           </div>
         ) : null}
-        {musicFilter.map(({ trackName, previewUrl }) => (
+        {musicFilter.map((music) => (
           <MusicCard
             key={ uuidv4() }
-            trackName={ trackName }
-            previewUrl={ previewUrl }
+            trackName={ music.trackName }
+            previewUrl={ music.previewUrl }
+            trackId={ music.trackId }
+            musicObj={ music }
           />
         ))}
       </div>
