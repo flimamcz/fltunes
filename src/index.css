@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 code {
@@ -15,5 +16,16 @@ code {
 .loading {
   align-items: center;
   display: flex;
+  justify-content: center;
+}
+
+.card-album {
+  background-color: grey;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 20px;
   justify-content: center;
 }

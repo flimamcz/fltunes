@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
@@ -10,6 +11,7 @@ class Search extends Component {
     loading: false,
     dataMusic: [],
     notFoundAlbum: false,
+    artistSearch: '',
   };
 
   searchArtist = ({ target }) => {
@@ -26,8 +28,10 @@ class Search extends Component {
 
   fetchAlbuns = async () => {
     const { valueInput } = this.state;
+    const responseAlbum = await searchAlbumsAPI(valueInput);
+    this.setState({ artistSearch: valueInput });
+    this.setState({ valueInput: '' });
     this.setState({ loading: true }, async () => {
-      const responseAlbum = await searchAlbumsAPI(valueInput);
       this.setState({
         dataMusic: responseAlbum,
         loading: false,
@@ -35,16 +39,18 @@ class Search extends Component {
 
       if (responseAlbum.length <= 0) {
         this.setState({ notFoundAlbum: true });
+      } else {
+        this.setState({ notFoundAlbum: false });
       }
-
-      // if (responseAlbum.length > 0) {
-      //   this.setState({ notFoundAlbum: false });
-      // }
     });
   };
 
   render() {
-    const { valueInput, disabled, loading, dataMusic, notFoundAlbum } = this.state;
+    const {
+      valueInput,
+      disabled, loading,
+      dataMusic, notFoundAlbum, artistSearch,
+    } = this.state;
     return (
       <div data-testid="page-search">
         <Header />
@@ -69,26 +75,32 @@ class Search extends Component {
         )}
 
         <div className="artist">
-          {dataMusic.length ? (
-            <p>
-              Resultado de álbuns de:
-              {' '}
-              { valueInput }
-            </p>
-          ) : null}
-
-          {dataMusic.length > 0 && dataMusic.map((album) => (
-            <div key={ album.collectionId }>
-              <img src={ album.artworkUrl100 } alt={ album.artistName } />
+          <div>
+            {dataMusic.length > 0 && (
               <p>
-                Album:
+                Resultado de álbuns de:
                 {' '}
-                {album.collectionName}
+                { artistSearch }
               </p>
-              <p>{album.artistName}</p>
-              {console.log(album)}
-            </div>
-          ))}
+            )}
+            {dataMusic.length > 0 && dataMusic.map((album) => (
+              <div key={ album.collectionId } className="card-album">
+                <img src={ album.artworkUrl100 } alt={ album.artistName } />
+                <p>
+                  Album:
+                  {' '}
+                  {album.collectionName}
+                </p>
+                <p>{album.artistName}</p>
+                <Link
+                  data-testid={ `link-to-album-${album.collectionId}` }
+                  to={ `/album/${album.collectionId}` }
+                >
+                  Ver álbum
+                </Link>
+              </div>
+            ))}
+          </div>
 
           {notFoundAlbum && <p>Nenhum álbum foi encontrado!</p>}
         </div>
