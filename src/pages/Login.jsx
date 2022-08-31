@@ -39,7 +39,7 @@ class Login extends Component {
     return (
       <div data-testid="page-login">
         {loading ? <Loading /> : (
-          <form>
+          <form onSubmit={ (e) => e.preventDefault() }>
             <input
               type="text"
               placeholder="Informe seu nome"
