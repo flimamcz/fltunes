@@ -9,15 +9,11 @@ class MusicCard extends Component {
     loading: false,
   };
 
-  // fetchFavorite = async () => {
-  //   const { checked } = this.state;
-  //   const { musicObj } = this.props;
-
-  //   if (checked) {
-  //     const responseAddSong = await addSong(musicObj);
-  //     console.log(responseAddSong);
-  //   }
-  // };
+  componentDidMount() {
+    const { favoriteSongs, trackId } = this.props;
+    const songsFavorites = favoriteSongs.some((track) => track.trackId === trackId);
+    this.setState({ checked: songsFavorites });
+  }
 
   handleCheckbox = ({ target }) => {
     const isChecked = target.checked;

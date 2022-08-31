@@ -4,11 +4,13 @@ import { v4 as uuidv4 } from 'uuid';
 import Header from '../components/Header';
 import musicsAPI from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   state = {
     dataMusics: [],
     musicFilter: [],
+    songFavorites: [],
   };
 
   componentDidMount() {
@@ -22,10 +24,13 @@ class Album extends Component {
       dataMusics: musics,
       musicFilter: musics.filter((_music, index) => index !== 0),
     });
+
+    const FavoriteSongs = await getFavoriteSongs();
+    this.setState({ songFavorites: FavoriteSongs });
   };
 
   render() {
-    const { dataMusics, musicFilter } = this.state;
+    const { dataMusics, musicFilter, songFavorites } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -39,6 +44,7 @@ class Album extends Component {
         {musicFilter.map((music) => (
           <MusicCard
             key={ uuidv4() }
+            favoriteSongs={ songFavorites }
             trackName={ music.trackName }
             previewUrl={ music.previewUrl }
             trackId={ music.trackId }
