@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import { getUser, updateUser } from '../services/userAPI';
@@ -12,7 +13,6 @@ class ProfileEdit extends Component {
     image: '',
     description: '',
     buttonDisabled: true,
-    redirect: false,
   };
 
   componentDidMount() {
@@ -58,11 +58,12 @@ class ProfileEdit extends Component {
       image,
     };
 
-    this.setState({ redirect: false, loading: true }, async () => {
+    this.setState({ loading: true }, async () => {
       const response = await updateUser(userUpdate);
+      const { history } = this.props;
       if (response === 'OK') {
-        this.setState({ redirect: true, loading: false });
-        this.props.history.push('/profile')
+        this.setState({ loading: false });
+        history.push('/profile');
       }
     });
   };
@@ -71,7 +72,7 @@ class ProfileEdit extends Component {
     const {
       loading, name, email,
       description, image,
-      buttonDisabled, redirect,
+      buttonDisabled,
     } = this.state;
 
     return (
@@ -137,10 +138,14 @@ class ProfileEdit extends Component {
             </button>
           </form>
         )}
-        {redirect && <Redirect to="/profile" />}
+        {/* {redirect && <Redirect to="/profile" />} NÃO FUNCINOU */}
       </div>
     );
   }
 }
+
+ProfileEdit.propTypes = {
+  history: PropTypes.string,
+}.isRequired;
 
 export default ProfileEdit;
