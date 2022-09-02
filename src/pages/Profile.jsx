@@ -6,7 +6,7 @@ import { getUser } from '../services/userAPI';
 
 class Profile extends Component {
   state = {
-    loading: false,
+    loading: true,
     user: {},
   };
 
@@ -31,11 +31,11 @@ class Profile extends Component {
         <Header />
         {loading ? <Loading /> : (
           <div>
-            <img data-testid="profile-image" src={ user.image } alt={ user.name } />
-            <Link to="/profile/edit">Editar perfil</Link>
             <p>{user.name}</p>
             <p>{user.email}</p>
             <p>{user.description}</p>
+            <img data-testid="profile-image" src={ user.image } alt={ user.name } />
+            <Link to="/profile/edit">Editar perfil</Link>
           </div>
         )}
       </div>

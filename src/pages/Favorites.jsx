@@ -15,14 +15,6 @@ class Favorites extends Component {
     this.fetchFavoritesSongs();
   }
 
-  // componentDidUpdate() {
-  //   this.removeSongs();
-  // }
-
-  // removeSongs = () => {
-  //   const { musicFavorites } = this.state;
-  // };
-
   fetchFavoritesSongs = async () => {
     const songsFavorites = await getFavoriteSongs();
     this.setState({ loading: true }, async () => {
