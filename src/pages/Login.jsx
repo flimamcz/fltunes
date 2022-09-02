@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import Logo from '../assets/images/logo-fl-tunes.svg';
 
 class Login extends Component {
   state = {
@@ -39,23 +40,28 @@ class Login extends Component {
     return (
       <div data-testid="page-login">
         {loading ? <Loading /> : (
-          <form onSubmit={ (e) => e.preventDefault() }>
-            <input
-              type="text"
-              placeholder="Informe seu nome"
-              data-testid="login-name-input"
-              value={ valueInput }
-              onChange={ this.verifyInput }
-            />
-            <button
-              type="button"
-              data-testid="login-submit-button"
-              disabled={ disabled }
-              onClick={ this.fetchCreateUser }
-            >
-              Entrar
-            </button>
-          </form>
+          <div className="login">
+            <div className="logo">
+              <img src={ Logo } alt="Logo Fl tunes" />
+            </div>
+            <form className="form-login" onSubmit={ (e) => e.preventDefault() }>
+              <input
+                type="text"
+                placeholder="Informe seu nome"
+                data-testid="login-name-input"
+                value={ valueInput }
+                onChange={ this.verifyInput }
+              />
+              <button
+                type="button"
+                data-testid="login-submit-button"
+                disabled={ disabled }
+                onClick={ this.fetchCreateUser }
+              >
+                Entrar
+              </button>
+            </form>
+          </div>
         )}
 
         {loggedIn ? <Redirect to="/search" /> : null}

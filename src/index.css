@@ -1,31 +1,78 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+*{
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: #E8E7E7;
+  font-family: 'Roboto', sans-serif;
 }
 
-.loading {
-  align-items: center;
+html {
+  font-size: 62.5%;
+}
+
+.login {
+  width: min(90%, 1260px);
+  margin: 6rem auto;
   display: flex;
+  align-items: center;
   justify-content: center;
-}
-
-.card-album {
-  background-color: grey;
-  width: 300px;
-  display: flex;
-  align-items: center;
   flex-direction: column;
-  margin-bottom: 20px;
-  padding: 20px;
-  justify-content: center;
+}
+
+.form-login {
+  width: min(50%, 650px);
+  margin-top: 10rem;
+  background-color: #ffffff;
+  padding: 9rem;
+  border-radius: 0.4rem;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-login input, .form-login button {
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid #E8E7E7;
+  padding: 1.2rem 1.6rem;
+  font-size: 1.4rem;
+  color: #2c2e30;
+  font-weight: 500;
+  outline: none;
+  border-radius: 0.3rem;
+}
+
+.form-login input:focus {
+  border: 1px solid #2FC18C;
+}
+
+.form-login input::placeholder {
+  opacity: 0.8;
+}
+
+.form-login button:disabled {
+  opacity: 0.5;
+} 
+
+.form-login button:hover:disabled {
+  transform: scale(1);
+  background-color: #004FFF;
+  transition: 0;
+}
+
+.form-login button { 
+  background-color: #004FFF;
+  color: white;
+  cursor: pointer;
+}
+
+.form-login button:hover {
+  transform: scale(1.04);
+  background-color: #004FFF;
+  transition: 0.4s ease-in-out;
 }
