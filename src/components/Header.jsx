@@ -45,7 +45,8 @@ class Header extends Component {
         <div>
           {loading ? <Loading /> : (
             <p data-testid="header-user-name">
-              <span>Usuario</span>
+              <span>Usuario:</span>
+              {' '}
               {user.name}
             </p>)}
         </div>
