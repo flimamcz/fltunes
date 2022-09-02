@@ -253,11 +253,13 @@ input, button {
   align-items: center;
   flex-direction: column;
   width: 350px;
-  height: 360px;
+  height: 380px;
   padding: 3rem;
   gap: 1rem;
   background-color: #ecdede;
   box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.15);
+  overflow: auto;
+  text-align: center;
 }
 
 .card-album:hover {
