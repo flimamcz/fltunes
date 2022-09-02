@@ -17,16 +17,17 @@ html {
 
 .login {
   width: min(90%, 1260px);
-  margin: 6rem auto;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 100vh;
 }
 
 .form-login {
   width: min(50%, 650px);
-  margin-top: 10rem;
+  margin-top: 8rem;
   background-color: #ffffff;
   padding: 9rem;
   border-radius: 0.4rem;
