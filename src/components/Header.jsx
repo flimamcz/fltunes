@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
+import Logo from '../assets/images/logo-white.svg';
+import IconUser from '../assets/images/icon-user.svg';
 
 class Header extends Component {
   state = {
@@ -26,30 +28,51 @@ class Header extends Component {
   render() {
     const { user, loading } = this.state;
     return (
-      <header data-testid="header-component">
-        <nav>
+      <header className="header-container" data-testid="header-component">
+        <div className="header">
+          <div className="logo-header">
+            <img src={ Logo } alt="Logo fl tunes" />
+          </div>
+          {loading ? <Loading /> : (
+            <p className="user" data-testid="header-user-name">
+              <img src={ IconUser } alt="icon user profile" width="27" />
+              {user.name}
+            </p>
+          )}
+        </div>
+        <nav className="navbar">
           <ul>
             <li>
-              <Link data-testid="link-to-search" to="/search"> Pesquisar</Link>
+              <Link
+                className="color-white"
+                data-testid="link-to-search"
+                to="/search"
+              >
+                Pesquisar
+              </Link>
             </li>
 
             <li>
-              <Link data-testid="link-to-favorites" to="/favorites">Favoritas</Link>
+              <Link
+                className="color-white"
+                data-testid="link-to-favorites"
+                to="/favorites"
+              >
+                Favoritas
+              </Link>
             </li>
 
             <li>
-              <Link data-testid="link-to-profile" to="/profile">Perfil</Link>
+              <Link
+                className="color-white"
+                data-testid="link-to-profile"
+                to="/profile"
+              >
+                Perfil
+              </Link>
             </li>
           </ul>
         </nav>
-        <div>
-          {loading ? <Loading /> : (
-            <p data-testid="header-user-name">
-              <span>Usuario:</span>
-              {' '}
-              {user.name}
-            </p>)}
-        </div>
       </header>
     );
   }
