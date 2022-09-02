@@ -3,11 +3,13 @@
 *{
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 0;  
+
 }
 
 body {
-  background-color: #E8E7E7;
+  background-color: #f0e8e8;
+  overflow-x: hidden;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -26,6 +28,10 @@ li {
 
 a {
   text-decoration: none;
+}
+
+input, button {
+  outline: none;
 }
 
 .login {
@@ -52,12 +58,11 @@ a {
 
 .form-login input, .form-login button {
   font-family: 'Roboto', sans-serif;
-  border: 1px solid #E8E7E7;
-  padding: 1.2rem 1.6rem;
-  font-size: 1.4rem;
   color: #2c2e30;
   font-weight: 500;
-  outline: none;
+  font-size: 1.4rem;
+  border: 1px solid #E8E7E7;
+  padding: 1.2rem 1.6rem;
   border-radius: 0.3rem;
 }
 
@@ -75,19 +80,19 @@ a {
 
 .form-login button:hover:disabled {
   transform: scale(1);
-  background-color: #004FFF;
+  background-color: #003BE5;
   transition: 0;
 }
 
 .form-login button { 
-  background-color: #004FFF;
+  background-color: #003BE5;
   color: white;
   cursor: pointer;
 }
 
 .form-login button:hover {
   transform: scale(1.04);
-  background-color: #004FFF;
+  background-color: #003BE5;
   transition: 0.4s ease-in-out;
 }
 
@@ -171,3 +176,132 @@ a {
   color: rgb(199, 189, 189);
 }
 
+/* form search */
+
+.form-search {
+  max-width: 700px;
+  margin: 6rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.form-search input{
+  width: 100%;
+  padding: 1.5rem;
+  border: none;
+  border: 1px solid rgb(212, 195, 195);
+  border-radius: 0.3rem;
+  font-family: 'Roboto', sans-serif;
+  color: #2c2e30;
+  font-size: 1.4rem;
+  background: url('./assets/images/icon-search.svg') no-repeat;
+  background-size: 26px;
+  background-position: 525px;
+}
+
+.form-search input:focus {
+  border: 1px solid #2FC18C;
+}
+
+.form-search button {
+  width: 20%;
+  background-color: #003BE5;
+  font-size: 1.4rem;
+  padding: 1.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  border: 1px solid rgb(212, 195, 195);
+  border: none;
+  cursor: pointer;
+}
+
+.form-search button:hover {
+  background-color: #0744c7;
+  transition: 0.3s;
+  transform: scale(1.03);
+}
+
+.artist-container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.result-album {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.album-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1160px;
+  margin: 0 auto;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+  overflow-y: hidden;
+}
+
+.card-album {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 350px;
+  height: 360px;
+  padding: 3rem;
+  gap: 1rem;
+  background-color: #ecdede;
+  box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card-album:hover {
+  transform: scale(1.02);
+  transition: 0.3s;
+}
+
+.card-album img {
+  width: 150px;
+}
+
+.name-album {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.name-artist {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.not-found-album {
+  display: block;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+}
+
+.view-album {
+  width: 50%;
+  text-align: center;
+  background-color: #003BE5;
+  color: #ffffff;
+  font-size: 1.6rem;
+  font-weight: 400;
+  border-radius: 0.3rem;
+  margin: 1rem;
+  padding: 1.2rem;
+}
+
+.view-album:hover {
+  background-color: #0744c7;
+  transition: 0.3s;
+}

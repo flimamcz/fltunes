@@ -55,7 +55,7 @@ class Search extends Component {
       <div data-testid="page-search">
         <Header />
         {loading ? <Loading /> : (
-          <form onSubmit={ (e) => e.preventDefault() }>
+          <form className="form-search" onSubmit={ (e) => e.preventDefault() }>
             <input
               type="text"
               placeholder="Nome do artista"
@@ -74,27 +74,28 @@ class Search extends Component {
           </form>
         )}
 
-        <div className="artist">
-          <div>
-            {dataMusic.length > 0 && (
-              <p>
-                Resultado de álbuns de:
-                {' '}
-                { artistSearch }
-              </p>
-            )}
+        <div className="artist-container">
+          {dataMusic.length > 0 && (
+            <p className="result-album">
+              Resultado de álbuns de:
+              {' '}
+              { artistSearch }
+            </p>
+          )}
+          <div className="album-container">
             {dataMusic.length > 0 && dataMusic.map((album) => (
               <div key={ album.collectionId } className="card-album">
                 <img src={ album.artworkUrl100 } alt={ album.artistName } />
-                <p>
+                <p className="name-album">
                   Album:
                   {' '}
                   {album.collectionName}
                 </p>
-                <p>{album.artistName}</p>
+                <p className="name-artist">{album.artistName}</p>
                 <Link
                   data-testid={ `link-to-album-${album.collectionId}` }
                   to={ `/album/${album.collectionId}` }
+                  className="view-album"
                 >
                   Ver álbum
                 </Link>
@@ -102,7 +103,13 @@ class Search extends Component {
             ))}
           </div>
 
-          {notFoundAlbum && <p>Nenhum álbum foi encontrado!</p>}
+          {notFoundAlbum && (
+            <p
+              className="not-found-album"
+            >
+              Nenhum álbum foi encontrado!
+            </p>
+          )}
         </div>
       </div>
     );
