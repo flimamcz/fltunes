@@ -33,15 +33,7 @@ class Header extends Component {
           <div className="logo-header">
             <img src={ Logo } alt="Logo fl tunes" />
           </div>
-          {loading ? <Loading /> : (
-            <p className="user" data-testid="header-user-name">
-              <img src={ IconUser } alt="icon user profile" width="27" />
-              {user.name}
-            </p>
-          )}
-        </div>
-        <nav className="navbar">
-          <ul>
+          <ul className="navbar">
             <li>
               <Link
                 className="color-white"
@@ -51,7 +43,6 @@ class Header extends Component {
                 Pesquisar
               </Link>
             </li>
-
             <li>
               <Link
                 className="color-white"
@@ -61,7 +52,6 @@ class Header extends Component {
                 Favoritas
               </Link>
             </li>
-
             <li>
               <Link
                 className="color-white"
@@ -71,8 +61,14 @@ class Header extends Component {
                 Perfil
               </Link>
             </li>
+            {loading ? <Loading /> : (
+              <p className="user" data-testid="header-user-name">
+                <img src={ IconUser } alt="icon user profile" width="27" />
+                {user.name}
+              </p>
+            )}
           </ul>
-        </nav>
+        </div>
       </header>
     );
   }

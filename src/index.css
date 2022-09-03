@@ -34,6 +34,17 @@ input, button {
   outline: none;
 }
 
+.loading {
+  color: black;
+  text-align: center;
+  width: 160px;
+  background: white;
+  border-radius: 2rem;
+  padding: 1rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
 .login {
   width: min(90%, 1260px);
   margin: 0 auto;
@@ -97,11 +108,9 @@ input, button {
 }
 
 .header-container {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  padding: 2rem 4rem;
   background-color: #2c2e30;
-  padding: 2rem 0 0 0;
 }
 
 .logo-header img {
@@ -109,12 +118,11 @@ input, button {
 }
 
 .header {
-  width: 80vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #2c2e30;
-  margin: 0 auto 2rem auto;
+  max-width: 1260px;
+  margin: 0 auto;
 }
 
 .user {
@@ -130,50 +138,49 @@ input, button {
 }
 
 .navbar {
-  background-color: #036B52;
-  padding: 2.4rem;
-}
-.navbar ul {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: space-between;
-  row-gap: 20px;
-  column-gap: 20px;
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
 }
 
-.navbar ul li{
-  width: 100%;
-  text-align: center;
-  font-size: 1.8rem;
-  letter-spacing: 0.05rem;
+.navbar li {
+  font-size: 1.6rem;
   font-weight: 500;
-  padding: 0.5rem;
-}
-
-.navbar ul li::after {
-  content: "";
-  background-color: white;
-  opacity: 0.8;
-  display: block;
-  width: 3px;
-  top: -24px;
-  height: 80px;
-  position: absolute;
-}
-
-.navbar ul li:first-child:after {
-  content: "";
-  width: 0;
-  height: 0;
 }
 
 .color-white {
-  color: white;
+  color: #fff;
+  height: 3px;
+}
+.color-white:hover {
+  color: #2FC18C;
+  transition: 0.3s;
+} 
+
+.color-white .menu_ativo {
+  color: #2FC18C;
 }
 
-.color-white:hover {
-  color: rgb(199, 189, 189);
+.color-white:hover::after {
+  content: "";
+  height: 3px;
+  background-color: currentColor;
+  display: block;
+  animation: animeLink 0.4s ease forwards;
+}
+
+.color-white :hover {
+  opacity: 0.9;
+}
+
+@keyframes animeLink {
+  from {
+      width: 0%;
+  }
+
+  to {
+      width: 100%;
+  }
 }
 
 /* form search */
