@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
-*{
+* {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;  
+  padding: 0;
 
 }
 
@@ -30,7 +30,8 @@ a {
   text-decoration: none;
 }
 
-input, button {
+input,
+button {
   outline: none;
 }
 
@@ -67,7 +68,8 @@ input, button {
   gap: 2rem;
 }
 
-.form-login input, .form-login button {
+.form-login input,
+.form-login button {
   font-family: 'Roboto', sans-serif;
   color: #2c2e30;
   font-weight: 500;
@@ -87,7 +89,7 @@ input, button {
 
 .form-login button:disabled {
   opacity: 0.5;
-} 
+}
 
 .form-login button:hover:disabled {
   transform: scale(1);
@@ -95,7 +97,7 @@ input, button {
   transition: 0;
 }
 
-.form-login button { 
+.form-login button {
   background-color: #003BE5;
   color: white;
   cursor: pointer;
@@ -132,7 +134,7 @@ input, button {
   padding: 0.5rem;
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   font-size: 1.4rem;
   font-weight: 500;
 }
@@ -152,10 +154,11 @@ input, button {
   color: #fff;
   height: 3px;
 }
+
 .color-white:hover {
   color: #2FC18C;
   transition: 0.3s;
-} 
+}
 
 .color-white .menu_ativo {
   color: #2FC18C;
@@ -166,7 +169,7 @@ input, button {
   height: 3px;
   background-color: currentColor;
   display: block;
-  animation: animeLink 0.4s ease forwards;
+  animation: animeLink 0.2s ease forwards;
 }
 
 .color-white :hover {
@@ -175,11 +178,11 @@ input, button {
 
 @keyframes animeLink {
   from {
-      width: 0%;
+    width: 0%;
   }
 
   to {
-      width: 100%;
+    width: 100%;
   }
 }
 
@@ -194,7 +197,7 @@ input, button {
   gap: 2rem;
 }
 
-.form-search input{
+.form-search input {
   width: 100%;
   padding: 1.5rem;
   border: none;
@@ -261,12 +264,14 @@ input, button {
   flex-direction: column;
   width: 350px;
   height: 380px;
-  padding: 3rem;
+  justify-content: center;
+  padding: 2rem;
   gap: 1rem;
   background-color: #ecdede;
   box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.15);
   overflow: auto;
   text-align: center;
+  margin-bottom: 3rem;
 }
 
 .card-album:hover {
@@ -313,4 +318,168 @@ input, button {
 .view-album:hover {
   background-color: #0744c7;
   transition: 0.3s;
+}
+
+.search-album {
+  margin-bottom: 4rem;
+}
+
+/* PROFILE */
+
+.profile {
+  max-width: 350px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.profile-section-edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9.5rem;
+  margin-bottom: 1rem;
+}
+
+.button-profile:disabled {
+  opacity: 0.5;
+}
+
+.button-profile:hover:disabled {
+  opacity: 0.8;
+  cursor: default;
+  background-color: transparent;
+  transform: scale(1);
+  transition: 0;
+  color: #003BE5;
+}
+
+.button-profile {
+  width: 120px;
+  background-color: none;
+  color: #003BE5;
+  border: 2px solid #003BE5;
+  padding: 1.2rem;
+  text-align: center;
+  font-size: 1.4rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+}
+
+.button-profile:hover {
+  background-color: #0744c7;
+  transform: scale(1.02);
+  transition: 0.3s;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.profile p {
+  padding: 1.5rem 1rem;
+  width: 300px;
+  font-size: 1.4rem;
+  border-radius: 0.25rem;
+  background-color: rgb(231, 214, 214);
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.profile-section input {
+  width: 70%;
+  padding: 1rem;
+}
+
+.profile span {
+  display: block;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #2c2e30;
+}
+
+.form-edit {
+  margin-top: 5rem;
+}
+
+.form-edit label {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.form-edit input,
+.form-edit textarea {
+  width: 350px;
+  padding: 1.2rem;
+  border: none;
+  border-bottom: 2px solid #0744c7;
+}
+
+/* ALBUM */
+
+.profile-album {
+  max-width: 1000px;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15rem;
+  margin: 4rem auto;
+  padding: 2rem;
+}
+
+.artist-name-album {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 1.6rem;
+  letter-spacing: 0.05rem;
+  color: #2c2e30;
+}
+
+.album-name {
+  font-size: 1.4rem;
+  padding-top: 1rem;
+  color: #1f312b;
+}
+
+.music-card {
+  overflow: auto;
+  overflow-x: hidden;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+.music-card::-webkit-scrollbar {
+  width: 20px;
+  /* width of the entire scrollbar */
+}
+
+.music-card::-webkit-scrollbar-track {
+  background: #2FC18C;
+  /* color of the tracking area */
+  border-radius: 0.2rem;
+}
+
+
+.music-card::-webkit-scrollbar-thumb {
+  background-color: whitesmoke;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 3px solid #2fc28c;
+  /* creates padding around scroll thumb */
 }

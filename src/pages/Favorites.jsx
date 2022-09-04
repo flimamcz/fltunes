@@ -11,18 +11,32 @@ class Favorites extends Component {
     loading: true,
   };
 
-  componentDidMount() {
-    this.fetchFavoritesSongs();
+  // componentDidMount() {
+  //   this.fetchFavoritesSongs();
+  // }
+
+  async componentDidMount() {
+    const newFavoriteSongs = await getFavoriteSongs();
+    this.setState({ loading: false, musicFavorites: newFavoriteSongs });
   }
 
-  fetchFavoritesSongs = async () => {
-    const songsFavorites = await getFavoriteSongs();
-    this.setState({ loading: true }, async () => {
-      this.setState({
-        musicFavorites: songsFavorites,
-        loading: false,
-      });
-    });
+  // fetchFavoritesSongs = async () => {
+  //   this.setState({ loading: true }, async () => {
+  //     const songsFavorites = await getFavoriteSongs();
+  //     this.setState({
+  //       musicFavorites: songsFavorites,
+  //       loading: false,
+  //     });
+  //   });
+  // };
+
+  handleCallback = async () => {
+    const { musicFavorites } = this.state;
+    this.setState({ loading: true });
+    const newFavoriteSongs = await getFavoriteSongs();
+    if (newFavoriteSongs !== musicFavorites) {
+      this.setState({ loading: false, musicFavorites: newFavoriteSongs });
+    }
   };
 
   render() {
@@ -34,6 +48,7 @@ class Favorites extends Component {
           {loading ? <Loading /> : (
             musicFavorites.map((music) => (
               <MusicCard
+                callBack={ this.handleCallback }
                 key={ uuidv4() }
                 favoriteSongs={ musicFavorites }
                 trackName={ music.trackName }

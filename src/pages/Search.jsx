@@ -52,7 +52,7 @@ class Search extends Component {
       dataMusic, notFoundAlbum, artistSearch,
     } = this.state;
     return (
-      <div data-testid="page-search">
+      <div className="search-album" data-testid="page-search">
         <Header />
         {loading ? <Loading /> : (
           <form className="form-search" onSubmit={ (e) => e.preventDefault() }>

@@ -15,28 +15,37 @@ class MusicCard extends Component {
     this.setState({ checked: songsFavorites });
   }
 
-  handleCheckbox = ({ target }) => {
-    const isChecked = target.checked;
-    this.setState({ checked: isChecked, loading: true }, async () => {
-      const { musicObj } = this.props;
-      if (isChecked) await addSong(musicObj);
-      if (!isChecked) await removeSong(musicObj);
-      this.setState({ loading: false });
-    });
+  handleCheckbox = async (obj, func) => {
+    const { checked } = this.state;
+    this.setState({ loading: true });
+    if (checked) {
+      await removeSong(obj);
+      this.setState({ checked: false });
+      func();
+    } else {
+      await addSong(obj);
+      this.setState({ checked: true });
+    }
+    this.setState({ loading: false });
   };
 
   render() {
-    const { previewUrl, trackName, trackId } = this.props;
+    const { previewUrl, trackName, trackId, musicObj, callBack } = this.props;
     const { checked, loading } = this.state;
     return (
-      <div>
+      <div className="container-music-card">
         {loading ? <Loading /> : (
-          <div className="music-card">
+          <div className="container-music-card">
+            <p>
+              {trackName}
+            </p>
             <div>
-              <p>
-                {trackName}
-              </p>
-              <audio data-testid="audio-component" src={ previewUrl } controls>
+              <audio
+                className="audio-ctrl"
+                data-testid="audio-component"
+                src={ previewUrl }
+                controls
+              >
                 <track kind="captions" />
                 O seu navegador não suporta o elemento
                 {' '}
@@ -51,8 +60,9 @@ class MusicCard extends Component {
                 type="checkbox"
                 data-testid={ `checkbox-music-${trackId}` }
                 checked={ checked }
-                onChange={ this.handleCheckbox }
+                onChange={ () => this.handleCheckbox(musicObj, callBack) }
                 id="favorite"
+                className="input-music-card"
               />
             </label>
           </div>

@@ -22,6 +22,11 @@ class ProfileEdit extends Component {
   fetchUser = async () => {
     this.setState({ loading: true }, async () => {
       const user = await getUser();
+      this.setState({ name: '',
+        email: '',
+        image: '',
+        description: '',
+      });
       const { name, email, description, image } = await user;
       this.setState({
         loading: false,
@@ -79,7 +84,19 @@ class ProfileEdit extends Component {
       <div data-testid="page-profile-edit">
         <Header />
         {loading ? <Loading /> : (
-          <form>
+          <form className="profile form-edit">
+
+            <div className="profile-section">
+              <img src={ image } alt={ name } width="90" />
+              <input
+                type="text"
+                data-testid="edit-input-image"
+                placeholder="Insira um link"
+                name="image"
+                value={ image }
+                onChange={ this.handleInput }
+              />
+            </div>
             <label htmlFor="name">
               Nome
               <span>Fique a vontade para usar seu nome social</span>
@@ -90,6 +107,7 @@ class ProfileEdit extends Component {
                 id="name"
                 value={ name }
                 onChange={ this.handleInput }
+                placeholder="Informe seu nome"
               />
             </label>
 
@@ -102,6 +120,7 @@ class ProfileEdit extends Component {
                 id="email"
                 data-testid="edit-input-email"
                 value={ email }
+                placeholder="Informe seu email"
                 onChange={ this.handleInput }
               />
             </label>
@@ -119,25 +138,18 @@ class ProfileEdit extends Component {
               />
             </label>
 
-            <input
-              type="text"
-              data-testid="edit-input-image"
-              placeholder="Insira um link"
-              name="image"
-              value={ image }
-              onChange={ this.handleInput }
-            />
-
             <button
               type="button"
               data-testid="edit-button-save"
               disabled={ buttonDisabled }
               onClick={ this.updateUser }
+              className="button-profile"
             >
               Editar perfil
             </button>
           </form>
         )}
+
         {/* {redirect && <Redirect to="/profile" />} NÃO FUNCINOU */}
       </div>
     );

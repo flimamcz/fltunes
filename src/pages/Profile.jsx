@@ -7,7 +7,10 @@ import { getUser } from '../services/userAPI';
 class Profile extends Component {
   state = {
     loading: true,
-    user: {},
+    name: '',
+    image: '',
+    email: '',
+    description: '',
   };
 
   componentDidMount() {
@@ -17,25 +20,42 @@ class Profile extends Component {
   fetchUser = async () => {
     this.setState({ loading: true }, async () => {
       const user = await getUser();
+      const { name, email, image, description } = await user;
       this.setState({
-        user,
+        name,
+        email,
+        image,
+        description,
         loading: false,
       });
     });
   };
 
   render() {
-    const { user, loading } = this.state;
+    const { name, email, image, description, loading } = this.state;
     return (
       <div data-testid="page-profile">
         <Header />
         {loading ? <Loading /> : (
-          <div>
-            <p>{user.name}</p>
-            <p>{user.email}</p>
-            <p>{user.description}</p>
-            <img data-testid="profile-image" src={ user.image } alt={ user.name } />
-            <Link to="/profile/edit">Editar perfil</Link>
+          <div className="profile">
+            <div className="profile-section-edit">
+              <img data-testid="profile-image" src={ image } alt={ name } width="90" />
+              <Link className="button-profile" to="/profile/edit">Editar perfil</Link>
+            </div>
+            <div>
+              <span>Nome:</span>
+              <p>{name}</p>
+            </div>
+
+            <div>
+              <span>Email:</span>
+              <p>{email}</p>
+            </div>
+
+            <div>
+              <span>description:</span>
+              <p>{description}</p>
+            </div>
           </div>
         )}
       </div>

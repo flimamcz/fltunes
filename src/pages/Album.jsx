@@ -34,23 +34,41 @@ class Album extends Component {
     return (
       <div data-testid="page-album">
         <Header />
-        {dataMusics.length ? (
-          <div>
-            <p data-testid="artist-name">{dataMusics[0].artistName}</p>
-            <p data-testid="album-name">{dataMusics[0].collectionName}</p>
-            <img src={ dataMusics[0].artworkUrl100 } alt={ dataMusics[0].artistName } />
+        <div className="profile-album">
+          {dataMusics.length ? (
+            <div className="perfil-album">
+              <img
+                src={ dataMusics[0].artworkUrl100 }
+                alt={ dataMusics[0].artistName }
+                width="260"
+              />
+              <p
+                className="artist-name-album"
+                data-testid="artist-name"
+              >
+                {dataMusics[0].artistName}
+              </p>
+              <p
+                className="album-name"
+                data-testid="album-name"
+              >
+                {dataMusics[0].collectionName}
+              </p>
+            </div>
+          ) : null}
+          <div className="music-card">
+            {musicFilter.map((music) => (
+              <MusicCard
+                key={ uuidv4() }
+                favoriteSongs={ songFavorites }
+                trackName={ music.trackName }
+                previewUrl={ music.previewUrl }
+                trackId={ music.trackId }
+                musicObj={ music }
+              />
+            ))}
           </div>
-        ) : null}
-        {musicFilter.map((music) => (
-          <MusicCard
-            key={ uuidv4() }
-            favoriteSongs={ songFavorites }
-            trackName={ music.trackName }
-            previewUrl={ music.previewUrl }
-            trackId={ music.trackId }
-            musicObj={ music }
-          />
-        ))}
+        </div>
       </div>
     );
   }

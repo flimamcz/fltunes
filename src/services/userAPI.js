@@ -29,9 +29,9 @@ export const getUser = () => new Promise((resolve) => {
 export const createUser = (user) => new Promise((resolve) => {
   const emptyUser = {
     name: '',
-    email: '',
-    image: '',
-    description: '',
+    email: 'email@usuario.com',
+    image: 'https://images2.imgbox.com/03/95/TEjAa6AA_o.png',
+    description: 'Descrição do usuario',
   };
   saveUser({ ...emptyUser, ...user });
   simulateRequest(SUCCESS_STATUS)(resolve);
