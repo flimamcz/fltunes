@@ -20,16 +20,6 @@ class Favorites extends Component {
     this.setState({ loading: false, musicFavorites: newFavoriteSongs });
   }
 
-  // fetchFavoritesSongs = async () => {
-  //   this.setState({ loading: true }, async () => {
-  //     const songsFavorites = await getFavoriteSongs();
-  //     this.setState({
-  //       musicFavorites: songsFavorites,
-  //       loading: false,
-  //     });
-  //   });
-  // };
-
   handleCallback = async () => {
     const { musicFavorites } = this.state;
     this.setState({ loading: true });

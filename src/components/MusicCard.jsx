@@ -11,21 +11,22 @@ class MusicCard extends Component {
 
   componentDidMount() {
     const { favoriteSongs, trackId } = this.props;
-    const songsFavorites = favoriteSongs.find((track) => track.trackId === trackId);
+    const songsFavorites = favoriteSongs.some((track) => track.trackId === trackId);
     this.setState({ checked: songsFavorites });
   }
 
   handleCheckbox = async (obj, func) => {
+    const { callBack } = this.props;
     const { checked } = this.state;
     this.setState({ loading: true });
     if (checked) {
       await removeSong(obj);
       this.setState({ checked: false });
-      func();
     } else {
       await addSong(obj);
       this.setState({ checked: true });
     }
+    if (callBack) func();
     this.setState({ loading: false });
   };
 
